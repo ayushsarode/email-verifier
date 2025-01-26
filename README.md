@@ -2,6 +2,9 @@
 
 A simple CLI tool built with Go to verify email addresses by checking their format, domain validity, and reachability.
 
+
+<img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fayushsarode%2Femail-verifier&label=visitors&countColor=%2337d67a&style=for-the-badge&labelStyle=upper" />
+
 ## Features
 - Validate email format using regex.
 - Check if the email domain has valid MX records.
