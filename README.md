@@ -2,7 +2,6 @@
 
 A simple CLI tool built with Go to verify email addresses by checking their format, domain validity, and reachability.
 
-
 <img src="https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fayushsarode%2Femail-verifier&label=visitors&countColor=%2337d67a&style=for-the-badge&labelStyle=upper" />
 
 ## Features
@@ -12,7 +11,8 @@ A simple CLI tool built with Go to verify email addresses by checking their form
 - Interactive CLI using Bubble Tea.
 
 ## Prerequisites
-- Go 1.18+
+- Go 1.22+
+- Docker (optional)
 
 ## Installation
 
@@ -31,7 +31,7 @@ go mod tidy
 
 Run the CLI tool:
 ```bash
-go run main.go verify --email your-email@example.com
+go run main.go verify --email=your-email@example.com
 ```
 
 Example output:
@@ -42,43 +42,30 @@ Example output:
 ✅ Email your-email@example.com is valid and reachable!
 ```
 
-## Project Structure
-```
-email-verifier/
-  └── cli/
-      ├── cmd/
-      │   ├── root.go
-      │   ├── verify.go
-      ├── internal/
-      │   ├── validator_test.go
-      │   ├── validator.go
-      ├── main.go
-      ├── go.mod
-      ├── go.sum
-```
+## Docker Usage
 
-## Commands
-
-### Verify an email
+### Build Docker Image
 ```bash
-go run main.go verify --email=your-email@example.com
+docker build -t ayushsarode777/email-verifier .
 ```
 
-### Flags
-- `--email` or `-e`: The email address to be verified.
+### Run Container
+```bash
+docker run -it ayushsarode777/email-verifier verify --email=your-email@example.com
+```
 
-## Error Handling
-
-Common errors handled:
-- Invalid email format.
-- Invalid domain without MX records.
-- Unreachable email via SMTP.
+### Pull from Docker Hub
+If you have pushed the image to Docker Hub, you can pull and run it directly:
+```bash
+docker pull ayushsarode777/email-verifier:latest
+docker run -it ayushsarode777/email-verifier ./app verify --email=your-email@example.com
+```
 
 ## Testing
 
 Run unit tests with:
 ```bash
-go test ./...
+go test ./cli/internal
 ```
 
 ## License
@@ -88,5 +75,4 @@ This project is licensed under the MIT License.
 ## Contribution
 
 Feel free to submit issues or pull requests to enhance the project.
-
 
